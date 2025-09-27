@@ -5,9 +5,6 @@
 #include "User.cpp" 
 using namespace std;
 
-// Forward declaration karena Course didefinisikan nanti
-//class Course; 
-
 class Instructor : public User {
 private:
     string expertise;
