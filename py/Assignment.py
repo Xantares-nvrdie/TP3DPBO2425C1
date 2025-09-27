@@ -1,7 +1,10 @@
 class Assignment:
-    def __init__(self, title, due_date):
-        self._title = title
-        self._due_date = due_date
-        
-    def get_title(self):
-        return self._title
+    def __init__(self, title, dueDate):
+        self.__title = title
+        self.__dueDate = dueDate
+
+    def getTitle(self):
+        return self.__title
+
+    def getDueDate(self):
+        return self.__dueDate

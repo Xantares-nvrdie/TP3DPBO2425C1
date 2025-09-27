@@ -1,22 +1,12 @@
-from __future__ import annotations
-from typing import TYPE_CHECKING
-
 from User import User
-from Assignment import Assignment
-
-# Impor Course hanya untuk type checking
-if TYPE_CHECKING:
-    from Course import Course
-
+from abc import ABC, abstractmethod
 class Instructor(User):
-    def __init__(self, user_id, name, expertise):
-        super().__init__(user_id, name)
-        self._expertise = expertise
+    def __init__(self, userId, name, expertise):
+        super().__init__(userId, name)
+        self.__expertise = expertise   # private
 
-    def display_info(self):
-        return f"{super().display_info()}, Peran: Instruktur, Keahlian: {self._expertise}"
-    
-    def create_assignment(self, course: 'Course', title: str, due_date: str):
-        assignment = Assignment(title, due_date)
-        course.add_assignment(assignment)
-        print(f"[INFO] Instruktur {self._name} menambahkan tugas '{title}'.")
+    def getExpertise(self):
+        return self.__expertise
+
+    def displayInfo(self):
+        print(f"Instructor: {self._name} ({self._id}) | Expertise: {self.__expertise}")
