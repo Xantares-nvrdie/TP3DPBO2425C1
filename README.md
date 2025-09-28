@@ -5,7 +5,7 @@ implementasi utama konsep:<br>
 - composition<br>
 - array of object (bisa pake vector)<br>
 
-Bonus nilai sebanyak ?? jika menambahkan bahasa Jawa Java dan mengimplementasikan minimal satu dari materi:
+Bonus nilai sebanyak ?? jika menambahkan bahasa Java dan mengimplementasikan minimal satu dari materi:
 - Hierarchical inheritance<br>
 - Multiple inheritance<br>
 - Hybrid inheritance<br>
