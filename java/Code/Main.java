@@ -51,14 +51,18 @@ public class Main {
         List<User> users = new ArrayList<>(List.of(ins1, ins2, ins3, s1, s2, s3, s4));
         List<Student> students = new ArrayList<>(List.of(s1, s2, s3, s4));
         List<Course> courses = new ArrayList<>(List.of(course1, course2, course3, course4, course5));
-
+        
         //OUTPUT
         // Menampilkan detail semua pengguna (User)
         System.out.println("========================================");
         System.out.println("       DETAIL SEMUA PENGGUNA");
         System.out.println("========================================");
-        for (User user : users) {
-            user.displayInfo(); // Memanggil metode secara polimorfik
+        if (users.isEmpty()) {
+            System.out.println("Belum ada user.");
+        } else {
+            for (User user : users) {
+                user.displayInfo(); // Memanggil metode secara polimorfik
+            }
         }
         System.out.println("\n");
 
@@ -66,37 +70,45 @@ public class Main {
         System.out.println("========================================");
         System.out.println("       DETAIL SEMUA MATA KULIAH");
         System.out.println("========================================");
-        for (Course course : courses) {
-            System.out.printf("Course: %s (%s)\n", course.getTitle(), course.getCourseCode());
-            Instructor instructor = course.getInstructor();
-            System.out.printf("   Instructor: %s - %s\n", instructor.getName(), instructor.getExpertise());
-            System.out.println("   Assignments:");
-            if (course.getAssignments().isEmpty()) {
-                System.out.println("     - Belum ada tugas.");
-            } else {
-                for (Assignment assignment : course.getAssignments()) {
-                    System.out.printf("     - %s (Due: %s)\n", assignment.getTitle(), assignment.getDueDate());
+        if (courses.isEmpty()) {
+            System.out.println("Belum ada course.");
+        } else {
+            for (Course course : courses) {
+                System.out.printf("Course: %s (%s)\n", course.getTitle(), course.getCourseCode());
+                Instructor instructor = course.getInstructor();
+                System.out.printf("   Instructor: %s - %s\n", instructor.getName(), instructor.getExpertise());
+                System.out.println("   Assignments:");
+                if (course.getAssignments().isEmpty()) {
+                    System.out.println("     - Belum ada tugas.");
+                } else {
+                    for (Assignment assignment : course.getAssignments()) {
+                        System.out.printf("     - %s (Due: %s)\n", assignment.getTitle(), assignment.getDueDate());
+                    }
                 }
+                System.out.println();
             }
-            System.out.println();
         }
 
         // Menampilkan detail semua submission yang dikelompokkan per mahasiswa
         System.out.println("========================================");
         System.out.println("     DETAIL SEMUA SUBMISSION MAHASISWA");
         System.out.println("========================================");
-        for (Student student : students) {
-            System.out.printf("Submissions by %s (%s):\n", student.getName(), student.getUserId());
-            if (student.getSubmissions().isEmpty()) {
-                System.out.println("   - Belum ada submission.");
-            } else {
-                for (Submission submission : student.getSubmissions()) {
-                    Assignment assignment = submission.getAssignment();
-                    System.out.printf("   - Tugas: %s | Tanggal: %s | Nilai: %d\n",
-                            assignment.getTitle(), submission.getSubmissionDate(), submission.getGrade());
+        if (students.isEmpty()) {
+            System.out.println("Belum ada student.");
+        } else {
+            for (Student student : students) {
+                System.out.printf("Submissions by %s (%s):\n", student.getName(), student.getUserId());
+                if (student.getSubmissions().isEmpty()) {
+                    System.out.println("   - Belum ada submission.");
+                } else {
+                    for (Submission submission : student.getSubmissions()) {
+                        Assignment assignment = submission.getAssignment();
+                        System.out.printf("   - Tugas: %s | Tanggal: %s | Nilai: %d\n",
+                                assignment.getTitle(), submission.getSubmissionDate(), submission.getGrade());
+                    }
                 }
+                System.out.println();
             }
-            System.out.println();
         }
     }
 }
