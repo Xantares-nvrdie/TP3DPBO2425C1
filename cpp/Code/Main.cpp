@@ -67,8 +67,12 @@ int main() {
     cout << "========================================" << endl;
     cout << "       DETAIL SEMUA PENGGUNA" << endl;
     cout << "========================================" << endl;
-    for (auto u : users) {
-        u->displayInfo(); // Polymorphic call
+    if (users.empty()) {
+        cout << "Belum ada user." << endl;
+    } else {
+        for (auto u : users) {
+            u->displayInfo(); // Polymorphic call
+        }
     }
     cout << "\n";
 
@@ -76,38 +80,45 @@ int main() {
     cout << "========================================" << endl;
     cout << "       DETAIL SEMUA MATA KULIAH" << endl;
     cout << "========================================" << endl;
-    for (const auto c : courses) {
-        cout << "Course: " << c->getTitle() << " (" << c->getCourseCode() << ")" << endl;
-        cout << "   Instructor: " << c->getInstructor()->getName()
-            << " - " << c->getInstructor()->getExpertise() << endl;
-        cout << "   Assignments:" << endl;
-        if (c->getAssignments().empty()) {
-            cout << "     - Belum ada tugas." << endl;
-        } else {
-            for (const auto ass : c->getAssignments()) {
-                cout << "     - " << ass->getTitle() << " (Due: " << ass->getDueDate() << ")" << endl;
+    if (courses.empty()) {
+        cout << "Belum ada mata kuliah." << endl;
+    } else {
+        for (const auto c : courses) {
+            cout << "Course: " << c->getTitle() << " (" << c->getCourseCode() << ")" << endl;
+            cout << "   Instructor: " << c->getInstructor()->getName()
+                << " - " << c->getInstructor()->getExpertise() << endl;
+            cout << "   Assignments:" << endl;
+            if (c->getAssignments().empty()) {
+                cout << "     - Belum ada tugas." << endl;
+            } else {
+                for (const auto ass : c->getAssignments()) {
+                    cout << "     - " << ass->getTitle() << " (Due: " << ass->getDueDate() << ")" << endl;
+                }
             }
+            cout << endl;
         }
-        cout << endl;
     }
 
     // Tampilkan semua detail submission mahasiswa
     cout << "========================================" << endl;
     cout << "     DETAIL SEMUA SUBMISSION MAHASISWA" << endl;
     cout << "========================================" << endl;
-    for (const auto s : students) {
-        cout << "Submissions by " << s->getName() << " (" << s->getUserId() << "):" << endl;
-        if (s->getSubmissions().empty()) {
-            cout << "   - Belum ada submission." << endl;
-        } else {
-            for (const auto sub : s->getSubmissions()) {
-                cout << "   - Tugas: " << sub->getAssignment()->getTitle()
-                    << " | Tanggal: " << sub->getSubmissionDate()
-                    << " | Nilai: " << sub->getGrade() << endl;
+    if (students.empty()) {
+        cout << "Belum ada mahasiswa." << endl;
+    } else {
+        for (const auto s : students) {
+            cout << "Submissions by " << s->getName() << " (" << s->getUserId() << "):" << endl;
+            if (s->getSubmissions().empty()) {
+                cout << "   - Belum ada submission." << endl;
+            } else {
+                for (const auto sub : s->getSubmissions()) {
+                    cout << "   - Tugas: " << sub->getAssignment()->getTitle()
+                        << " | Tanggal: " << sub->getSubmissionDate()
+                        << " | Nilai: " << sub->getGrade() << endl;
+                }
             }
+            cout << endl;
         }
-        cout << endl;
     }
-    
     return 0;
 }
