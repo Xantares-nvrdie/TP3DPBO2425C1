@@ -84,7 +84,7 @@ def main():
             else:
                 for assignment in course.getAssignments():
                     print(f"     - {assignment.getTitle()} (Due: {assignment.getDueDate()})")
-            print("\n")
+            print()
 
     # Menampilkan detail semua submission yang dikelompokkan per mahasiswa
     print("========================================")
@@ -101,7 +101,7 @@ def main():
                 for submission in student.getSubmissions():
                     assignment = submission.getAssignment()
                     print(f"   - Tugas: {assignment.getTitle()} | Tanggal: {submission.getSubmissionDate()} | Nilai: {submission.getGrade()}")
-            print("\n")
+            print()
 
 if __name__ == "__main__":
     main()
