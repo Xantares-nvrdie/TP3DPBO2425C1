@@ -94,6 +94,9 @@ Saya, Bintang Fajar Putra Pamungkas dengan NIM 2405073, mengerjakan Tugas Prakti
     Semua data sudah ditampilkan sesuai relasi antar kelas.
 
 # 📸 DOCUMENTATION
+## BUKTI SEBELUM HARDCODE DATA
+<img width="439" height="214" alt="Screenshot 2025-09-29 at 18 39 23" src="https://github.com/user-attachments/assets/144f9fd7-5646-4e9d-a826-bde7d55ed27e" />
+
 ## BUKTI PROGRAM CPP BERJALAN 
 <img width="715" height="805" alt="Screenshot 2025-09-29 at 00 39 45" src="https://github.com/user-attachments/assets/0d8d5ae5-6c60-45aa-8314-640479e0194a" />
 
