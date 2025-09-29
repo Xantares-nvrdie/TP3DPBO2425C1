@@ -58,39 +58,50 @@ def main():
     print("========================================")
     print("       DETAIL SEMUA PENGGUNA")
     print("========================================")
-    for user in users:
-        user.displayInfo()  # Memanggil metode secara polimorfik
+
+    if not users:
+        print("Belum ada user.")
+    else:
+        for user in users:
+            user.displayInfo()  # Memanggil metode secara polimorfik
     print("\n")
 
     # Menampilkan detail semua mata kuliah (Course) beserta tugasnya
     print("========================================")
     print("       DETAIL SEMUA MATA KULIAH")
     print("========================================")
-    for course in courses:
-        print(f"Course: {course.getTitle()} ({course.getCourseCode()})")
-        instructor = course.getInstructor()
-        print(f"   Instructor: {instructor.getName()} - {instructor.getExpertise()}")
-        print("   Assignments:")
-        if not course.getAssignments():
-            print("     - Belum ada tugas.")
-        else:
-            for assignment in course.getAssignments():
-                print(f"     - {assignment.getTitle()} (Due: {assignment.getDueDate()})")
-        print()
+
+    if not courses:
+        print("Belum ada course.")
+    else:
+        for course in courses:
+            print(f"Course: {course.getTitle()} ({course.getCourseCode()})")
+            instructor = course.getInstructor()
+            print(f"   Instructor: {instructor.getName()} - {instructor.getExpertise()}")
+            print("   Assignments:")
+            if not course.getAssignments():
+                print("     - Belum ada tugas.")
+            else:
+                for assignment in course.getAssignments():
+                    print(f"     - {assignment.getTitle()} (Due: {assignment.getDueDate()})")
+            print("\n")
 
     # Menampilkan detail semua submission yang dikelompokkan per mahasiswa
     print("========================================")
     print("     DETAIL SEMUA SUBMISSION MAHASISWA")
     print("========================================")
-    for student in students:
-        print(f"Submissions by {student.getName()} ({student.getUserId()}):")
-        if not student.getSubmissions():
-            print("   - Belum ada submission.")
-        else:
-            for submission in student.getSubmissions():
-                assignment = submission.getAssignment()
-                print(f"   - Tugas: {assignment.getTitle()} | Tanggal: {submission.getSubmissionDate()} | Nilai: {submission.getGrade()}")
-        print()
+    if not students:
+        print("Belum ada student.")
+    else:
+        for student in students:
+            print(f"Submissions by {student.getName()} ({student.getUserId()}):")
+            if not student.getSubmissions():
+                print("   - Belum ada submission.")
+            else:
+                for submission in student.getSubmissions():
+                    assignment = submission.getAssignment()
+                    print(f"   - Tugas: {assignment.getTitle()} | Tanggal: {submission.getSubmissionDate()} | Nilai: {submission.getGrade()}")
+            print("\n")
 
 if __name__ == "__main__":
     main()
